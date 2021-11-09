@@ -27,7 +27,7 @@ namespace Z_Tata_GC_Lab_10
             Movie starTrek = new Movie("Star Trek", MovieCategory.scifi);
             Movie dune = new Movie("Dune", MovieCategory.scifi);
 
-            //create new dictionary to hold the movie 
+            //create new sorted dictionary to hold the movie 
             //movie title = key 
             //movie category = value
             SortedDictionary<string, MovieCategory> movieDictionary = new SortedDictionary<string, MovieCategory>();
@@ -49,7 +49,10 @@ namespace Z_Tata_GC_Lab_10
 
             do //allows the user to continue if they want to go again 
             {
-                MovieCategory userChoice = (MovieCategory)ValidateNumber();
+                //gets user category selection as an enum
+                MovieCategory userChoice = (MovieCategory)GetUserChoice();
+                
+                //uses user selection to execute method displaying each movie type
                 switch (userChoice)
                 {
                     case MovieCategory.animated:
@@ -76,7 +79,8 @@ namespace Z_Tata_GC_Lab_10
             Console.ReadKey();
         }
         
-        public static MovieCategory ValidateNumber()
+        //gets user selection for movie category
+        public static MovieCategory GetUserChoice()
         {
             bool isValidNumber = false;
             string userInput = "";
@@ -89,27 +93,36 @@ namespace Z_Tata_GC_Lab_10
                 Console.WriteLine("Horror = 3");
                 Console.WriteLine("Sci-Fi = 4");
                 userInput = Console.ReadLine();
-                isValidNumber = int.TryParse(userInput, out userNumber);
-
-                if (isValidNumber == false)
-                {
-                    Console.WriteLine("Sorry, that is not a valid input.");
-                    isValidNumber = false;
-                }
-                else if (userNumber > 4 || userNumber < 1)
-                {
-                    Console.WriteLine("Sorry, your selection have to be 1, 2, 3, or 4.");
-                    isValidNumber = false;
-                }
-                else
-                {
-                    Console.WriteLine("Thanks!");
-                    isValidNumber = true;
-                }
+                isValidNumber = ValidateNumber(userInput, out userNumber);
             }
 
             MovieCategory userChoice = (MovieCategory)userNumber;
             return userChoice;
+        }
+
+        //validates user choice to see if it is an int and if it is an acceptable int
+        public static bool ValidateNumber(string userInput, out int userNumber)
+        {
+            bool isValidNumber = int.TryParse(userInput, out userNumber);
+
+            if (isValidNumber == false)
+            {
+                Console.WriteLine("Sorry, that is not a valid input.");
+                isValidNumber = false;
+                return isValidNumber;
+            }
+            else if (userNumber > 4 || userNumber < 1)
+            {
+                Console.WriteLine("Sorry, your selection have to be 1, 2, 3, or 4.");
+                isValidNumber = false;
+                return isValidNumber;
+            }
+            else
+            {
+                Console.WriteLine("Thanks!");
+                isValidNumber = true;
+                return isValidNumber;
+            }
         }
 
         //prompts the user if they would like to continue and returns the relevant bool 
@@ -128,6 +141,7 @@ namespace Z_Tata_GC_Lab_10
             }
         }
 
+        //displays animated films from the movie list 
         public static void DisplayAnimatedMovie(SortedDictionary<string, MovieCategory> movieDictionary)
         {
             Console.WriteLine("This list contains the following animated films: ");
@@ -140,6 +154,7 @@ namespace Z_Tata_GC_Lab_10
             }
         }
 
+        //displays drama films from the movie list
         public static void DisplayDramaMovie(SortedDictionary<string, MovieCategory> movieDictionary)
         {
             Console.WriteLine("This list contains the following drama films: ");
@@ -152,6 +167,7 @@ namespace Z_Tata_GC_Lab_10
             }
         }
 
+        //displays horror films from the movie list
         public static void DisplayHorrorMovie(SortedDictionary<string, MovieCategory> movieDictionary)
         {
             Console.WriteLine("This list contains the following horror films: ");
@@ -164,6 +180,7 @@ namespace Z_Tata_GC_Lab_10
             }
         }
 
+        //displays scifi films from the movie list 
         public static void DisplaySciFiMovie(SortedDictionary<string, MovieCategory> movieDictionary)
         {
             Console.WriteLine("This list contains the following scifi films: ");
