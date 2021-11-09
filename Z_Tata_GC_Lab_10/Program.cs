@@ -29,10 +29,10 @@ namespace Z_Tata_GC_Lab_10
 
             //create new dictionary to hold the movie 
             //movie title = key 
-            //movie category = value 
-            Dictionary<string, MovieCategory> movieDictionary = new Dictionary<string, MovieCategory>();
-            movieDictionary.Add(ratatouille.MovieTitle, ratatouille.MovieCategory);
+            //movie category = value
+            SortedDictionary<string, MovieCategory> movieDictionary = new SortedDictionary<string, MovieCategory>();
             movieDictionary.Add(shrek.MovieTitle, shrek.MovieCategory);
+            movieDictionary.Add(ratatouille.MovieTitle, ratatouille.MovieCategory);
             movieDictionary.Add(casablanca.MovieTitle, casablanca.MovieCategory);
             movieDictionary.Add(apocalypseNow.MovieTitle, apocalypseNow.MovieCategory);
             movieDictionary.Add(psycho.MovieTitle, psycho.MovieCategory);
@@ -45,6 +45,7 @@ namespace Z_Tata_GC_Lab_10
             bool doContinue = true;
 
             Console.WriteLine("Welcome to the movie list application. ");
+            Console.WriteLine("This list of movies contains 10 films.");
 
             do //allows the user to continue if they want to go again 
             {
@@ -127,12 +128,10 @@ namespace Z_Tata_GC_Lab_10
             }
         }
 
-        public static void DisplayAnimatedMovie(Dictionary<string, MovieCategory> movieDictionary)
+        public static void DisplayAnimatedMovie(SortedDictionary<string, MovieCategory> movieDictionary)
         {
             Console.WriteLine("This list contains the following animated films: ");
-            //sorts dictionary by keys (movie titles)
-            var sortedDictionary = movieDictionary.OrderBy(x => x.Key);
-            foreach (var movie in sortedDictionary)
+            foreach (var movie in movieDictionary)
             {
                 if (movie.Value == MovieCategory.animated)
                 {
@@ -141,12 +140,10 @@ namespace Z_Tata_GC_Lab_10
             }
         }
 
-        public static void DisplayDramaMovie(Dictionary<string, MovieCategory> movieDictionary)
+        public static void DisplayDramaMovie(SortedDictionary<string, MovieCategory> movieDictionary)
         {
             Console.WriteLine("This list contains the following drama films: ");
-            //sorts dictionary by keys (movie titles)
-            var sortedDictionary = movieDictionary.OrderBy(x => x.Key);
-            foreach (var movie in sortedDictionary)
+            foreach (var movie in movieDictionary)
             {
                 if (movie.Value == MovieCategory.drama)
                 {
@@ -155,12 +152,10 @@ namespace Z_Tata_GC_Lab_10
             }
         }
 
-        public static void DisplayHorrorMovie(Dictionary<string, MovieCategory> movieDictionary)
+        public static void DisplayHorrorMovie(SortedDictionary<string, MovieCategory> movieDictionary)
         {
             Console.WriteLine("This list contains the following horror films: ");
-            //sorts dictionary by keys (movie titles)
-            var sortedDictionary = movieDictionary.OrderBy(x => x.Key);
-            foreach (var movie in sortedDictionary)
+            foreach (var movie in movieDictionary)
             {
                 if (movie.Value == MovieCategory.horror)
                 {
@@ -169,12 +164,10 @@ namespace Z_Tata_GC_Lab_10
             }
         }
 
-        public static void DisplaySciFiMovie(Dictionary<string, MovieCategory> movieDictionary)
+        public static void DisplaySciFiMovie(SortedDictionary<string, MovieCategory> movieDictionary)
         {
             Console.WriteLine("This list contains the following scifi films: ");
-            //sorts dictionary by keys (movie titles)
-            var sortedDictionary = movieDictionary.OrderBy(x => x.Key);
-            foreach (var movie in sortedDictionary)
+            foreach (var movie in movieDictionary)
             {
                 if (movie.Value == MovieCategory.scifi)
                 {
