@@ -31,6 +31,8 @@ namespace Z_Tata_GC_Lab_10
             //movie title = key 
             //movie category = value
             SortedDictionary<string, MovieCategory> movieDictionary = new SortedDictionary<string, MovieCategory>();
+           
+            //populates the sorted dictionary with 10 films 
             movieDictionary.Add(shrek.MovieTitle, shrek.MovieCategory);
             movieDictionary.Add(ratatouille.MovieTitle, ratatouille.MovieCategory);
             movieDictionary.Add(casablanca.MovieTitle, casablanca.MovieCategory);
@@ -42,8 +44,10 @@ namespace Z_Tata_GC_Lab_10
             movieDictionary.Add(starTrek.MovieTitle, starTrek.MovieCategory);
             movieDictionary.Add(dune.MovieTitle, dune.MovieCategory);
 
+            //bool for the do while loop that allows users to continue the program
             bool doContinue = true;
 
+            Console.WriteLine("Z Tata GC AHBC Lab 10");
             Console.WriteLine("Welcome to the movie list application. ");
             Console.WriteLine("This list of movies contains 10 films.");
 
